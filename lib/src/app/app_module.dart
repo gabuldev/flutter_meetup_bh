@@ -1,7 +1,10 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:meetup_bh/src/app_widget.dart';
-import 'package:meetup_bh/src/app_bloc.dart';
+import 'package:meetup_bh/src/shared/repository/customdio.dart';
+
+import 'app_bloc.dart';
+import 'app_widget.dart';
 
 class AppModule extends ModuleWidget {
   @override
@@ -10,7 +13,9 @@ class AppModule extends ModuleWidget {
       ];
 
   @override
-  List<Dependency> get dependencies => [];
+  List<Dependency> get dependencies => [
+    Dependency((i) => CustomDio(Dio()))
+  ];
 
   @override
   Widget get view => AppWidget();

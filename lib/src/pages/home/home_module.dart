@@ -1,9 +1,11 @@
 
 import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import 'home_bloc.dart';
 import 'home_page.dart';
+import 'home_repository.dart';
 
 class HomeModule extends ModuleWidget {
   @override
@@ -12,7 +14,9 @@ class HomeModule extends ModuleWidget {
       ];
 
   @override
-  List<Dependency> get dependencies => [];
+  List<Dependency> get dependencies => [
+    Dependency((i) => HomeRepository(Dio()))
+  ];
 
   @override
   Widget get view => HomePage();
